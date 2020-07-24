@@ -1,5 +1,5 @@
 from web_scraper import __version__
-from web_scraper.scraper import wiki_page_parse
+from web_scraper.scraper import wiki_page_parse, auto_search
 
 wa_text = '''Confusion over the state of Washington and the city of Washington, D.C., led to renaming proposals during the statehood process for Washington in 1889, including David Dudley Field II's suggestion to name the new state "Tacoma". These proposals failed to garner support.[10] Washington, D.C.'s, own statehood movement in the 21st century includes a proposal to use the name "State of Washington, Douglass Commonwealth", which would conflict with the current state of Washington.[11] Residents of Washington (known as "Washingtonians") and the Pacific Northwest simply refer to the state as "Washington",[citation needed] and the nation's capital "Washington, D.C.", "the other Washington",[12] or simply "D.C."
 
@@ -23,6 +23,14 @@ def test_version():
 def test_wiki_page_parse_exists():
     wiki_page_parse
 
+
+def test_auto_search_exists():
+    auto_search
+
+
+def test_check_wiki_article_exists():
+    wiki_page_parse.check_for_wiki_article
+    
 
 def test_get_citations_needed_count_exist():
     wiki_page_parse.get_citations_needed_count
@@ -73,3 +81,13 @@ def test_get_citations_needed_report_usa_last_200():
 
 '''
     assert actual[-200:] == expected
+
+
+def test_check_wiki_article_false():
+    invalid_search = wiki_page_parse('https://en.wikipedia.org/wiki/Cxvxczdfaff')
+    assert invalid_search.check_for_wiki_article() == False
+
+
+def test_check_wiki_article_true():
+    invalid_search = wiki_page_parse('https://en.wikipedia.org/wiki/Costa_Rica')
+    assert invalid_search.check_for_wiki_article() == True
