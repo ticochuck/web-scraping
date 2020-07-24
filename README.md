@@ -1,6 +1,6 @@
 # Web Scraping
 
-[Link to Latest PR]()
+[Link to Latest PR](https://github.com/ticochuck/web-scraping/pull/1)
 
 ## Description
 It’s wonderful when someone has gone to the effort to expose their site’s data through an API
